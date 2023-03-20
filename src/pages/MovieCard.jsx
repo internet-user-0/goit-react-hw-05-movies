@@ -1,12 +1,13 @@
 import { useParams, NavLink, useLocation } from 'react-router-dom';
-import { getTrendingMovies, getGenreMovies, getSearchMovies, getDetailsMovie } from '../components/Api/api';
+import { getTrendingMovies, getGenreMovies, } from '../components/Api/api';
+// getSearchMovies,getDetailsMovie
 
 import { useEffect, useState } from 'react';
 
 const MovieCard = () => {
    const [cards, setCards] = useState('');
    const [ genres , setGenres] = useState('');
-   const [detail, setDetail] = useState('')
+   // const [detail, setDetail] = useState('')
    const { currentId } = useParams();
    const location = useLocation()
    console.log(location)
@@ -18,19 +19,18 @@ const MovieCard = () => {
    useEffect(() => {
       async function getData() {
          setGenres(await getGenreMovies());
-         setDetail(await getDetailsMovie(currentId))
-         if (!location.state) {
+         // setDetail(await getDetailsMovie(currentId))
+         // if (!location.state) {
             return setCards(await getTrendingMovies(currentId));
-         }
-         console.log('asdasd')
-            setCards(await getSearchMovies(location.state.name));
+         // }
+            // setCards(await getSearchMovies(location.state.name));
       }
       getData();
    }, [currentId]);
 
    console.log(currentCard);
    // console.log(currentId);
-   console.log(detail);
+   // console.log(detail);
 
 
    function getGenreMarkup() {
