@@ -1,6 +1,6 @@
 import { useParams, NavLink, useLocation } from 'react-router-dom';
-import { getTrendingMovies } from '../components/Api/api';
-// getSearchMovies,getDetailsMovie getGenreMovies
+import {  getTrendingMovies } from '../components/Api/api';
+// getGenreMovies, getSearchMovies,getDetailsMovie
 
 import { useEffect, useState } from 'react';
 
@@ -18,9 +18,7 @@ const MovieCard = () => {
 
    useEffect(() => {
       async function getData() {
-         // не працює, вибиває помилку
          // setGenres(await getGenreMovies());
-         // не працює, вибиває помилку
          // setDetail(await getDetailsMovie(currentId))
          // if (!location.state) {
             return setCards(await getTrendingMovies(currentId));
@@ -35,7 +33,6 @@ const MovieCard = () => {
    // console.log(detail);
 
 
-// не працює, вибиває помилку
    // function getGenreMarkup() {
    //    const genresId = currentCard.genre_ids;
    //    return genres &&
