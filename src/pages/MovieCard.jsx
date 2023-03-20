@@ -29,13 +29,13 @@ const MovieCard = () => {
             return setGenres(await getGenreMovies());
       }
       getData();
-   }, [currentId]);
+   }, [currentId, location.state.name]);
 
 
 
    function getGenreMarkup() {
       const genresId = currentCard.genre_ids;
-      return genres &&
+      genres &&
          genres.map(genre => {
             if (genresId.includes(genre.id)) {
                return <li key={genre.id} >{genre.name}</li>;
