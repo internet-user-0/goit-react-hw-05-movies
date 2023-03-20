@@ -21,7 +21,7 @@ export const getGenreMovies = async () => {
       const {data} = await axios.get(
          `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`
       );
-      return data.results;
+      return data.genres;
    } catch (error) {
       console.error(error.message);
    }
@@ -44,7 +44,7 @@ export const getDetailsMovie = async (movieId) => {
       const {data} = await axios.get(
          `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`);
          console.log(data)
-      return data.results;
+      return data;
    } catch (error) {
       console.error(error.message);
    }

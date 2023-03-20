@@ -1,11 +1,13 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import {getTrendingMovies} from '../components/Api/api'
 
 
 const Home = () => {
-   const [trends, setTrends] = useState('')
+   const [trends, setTrends] = useState('');
+   const location = useLocation()
+   console.log(location)
 
 
    useEffect(() => {
@@ -24,7 +26,7 @@ const Home = () => {
             {trends && trends.map((trend) => {
                return (
                   <li key={`${trend.id}`}>
-                     <NavLink to={`${trend.id}`}>{trend.title}</NavLink>
+                     <NavLink state={{from: location}} to={`${trend.id}`}>{trend.title}</NavLink>
                   </li>
                );
             })}
