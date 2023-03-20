@@ -35,6 +35,3 @@ const Home = () => {
 
 export default Home;
 
-/* <Link to={`${anime}`} key={anime}>
-   {anime}
-</Link>; */
