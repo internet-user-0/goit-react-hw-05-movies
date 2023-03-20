@@ -14,14 +14,14 @@ function Movies() {
    useEffect(() => {
       async function getData() {
          setMovieCard(await getSearchMovies(movieId));
-         console.log(movieCard);
+         
       }
       getData();
    }, [movieId]);
 
    const updateQueryString = evt => {
       const nameValue = evt.target.value;
-      console.log(evt.target.value)
+      
       
       if (nameValue === '') {
          return setSearchParams({});
