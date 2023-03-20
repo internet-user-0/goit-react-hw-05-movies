@@ -12,7 +12,7 @@ const MovieCard = () => {
    const location = useLocation()
    console.log(location)
 
-   const currentCard = cards && cards.find(card => card.id === currentId);
+   const currentCard = cards && cards.find(card => card.id == currentId);
    const date = `${currentCard.release_date}`;
 
 
