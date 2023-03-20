@@ -33,15 +33,15 @@ const MovieCard = () => {
    // console.log(detail);
 
 
-   function getGenreMarkup() {
-      const genresId = currentCard.genre_ids;
-      return genres &&
-         genres.map(genre => {
-            if (genresId.includes(genre.id)) {
-               return <li key={genre.id} >{genre.name}</li>
-            }
-         });
-   }
+   // function getGenreMarkup() {
+   //    const genresId = currentCard.genre_ids;
+   //    return genres &&
+   //       genres.map(genre => {
+   //          if (genresId.includes(genre.id)) {
+   //             return <li key={genre.id} >{genre.name}</li>
+   //          }
+   //       });
+   // }
 
    return (
       <main>
@@ -61,7 +61,7 @@ const MovieCard = () => {
                </li>
                <li>
                   <h4>Gernes</h4>
-                  <ul>{getGenreMarkup()}</ul>
+                  {/* <ul>{getGenreMarkup()}</ul> */}
                </li>
             </ul>
          </div>
