@@ -49,3 +49,25 @@ export const getDetailsMovie = async (movieId) => {
       console.error(error.message);
    }
 };
+
+
+export const getActorsMovie = async (movieId) => {
+   try {
+      const {data} = await axios.get(
+         `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`);
+      return data;
+   } catch (error) {
+      console.error(error.message);
+   }
+};
+
+
+export const getReviewsMovie = async (movieId) => {
+   try {
+      const {data} = await axios.get(
+         `${BASE_URL}/movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US&page=1`);
+      return data.results;
+   } catch (error) {
+      console.error(error.message);
+   }
+};

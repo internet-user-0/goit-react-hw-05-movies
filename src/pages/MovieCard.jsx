@@ -1,47 +1,38 @@
 import { useParams, NavLink, useLocation } from 'react-router-dom';
-import { getGenreMovies, getTrendingMovies, getSearchMovies } from '../components/Api/api';
-//  getSearchMovies,getDetailsMovie
+import {getGenreMovies, getDetailsMovie, getActorsMovie, getReviewsMovie } from '../components/Api/api';
 
 import { useEffect, useState } from 'react';
 
 const MovieCard = () => {
-   const [cards, setCards] = useState('');
+   const [currentCard, setCurrentCard] = useState('');
    const [ genres , setGenres] = useState('');
-   // const [detail, setDetail] = useState('')
+   const [actors, setActors] = useState('')
+   const [reviews, setReviews] = useState('')
    const { currentId } = useParams();
    const location = useLocation()
-   console.log(location)
+   // console.log(location)
 
-   const currentCard = cards && cards.find(card => `${card.id}` === `${currentId}`);
-   const date = `${currentCard.release_date}`;
 
 
    useEffect(() => {
       async function getData() {
-         
-         
-         // setDetail(await getDetailsMovie(currentId))
-         if (!location.state.name) {
-            setCards(await getTrendingMovies(currentId));
-            return setGenres(await getGenreMovies());
-         }
-            setCards(await getSearchMovies(location.state.name));
-            return setGenres(await getGenreMovies());
+         setCurrentCard(await getDetailsMovie(currentId))
+            setActors(await getActorsMovie(currentId))
+            setReviews(await getReviewsMovie(currentId))
+            setGenres(await getGenreMovies());
       }
       getData();
-   }, [currentId, location.state.name]);
+   }, [currentId]);
 
 
 
-   function getGenreMarkup() {
-      const genresId = currentCard.genre_ids;
-      genres &&
-         genres.map(genre => {
-            if (genresId.includes(genre.id)) {
-               return <li key={genre.id} >{genre.name}</li>;
-            }
-         });
-   }
+function getGenreMarkup() {
+   console.log(currentCard.genres)
+   console.log(genres)
+
+   console.log()
+};
+getGenreMarkup()
 
    return (
       <main>
@@ -51,17 +42,19 @@ const MovieCard = () => {
             <ul>
                <li>
                   <h2>
-                     {currentCard.title} <span>({date.slice(0, 4)})</span>
+                     {currentCard.title} <span>()</span>
                   </h2>
                </li>
-               <li>user score</li>
+               <li>user score <p>{currentCard.vote_average}</p></li>
                <li>
                   <h3>Overvier</h3>
                   <p>{currentCard.overview}</p>
                </li>
                <li>
                   <h4>Gernes</h4>
-                  <ul>{getGenreMarkup()}</ul>
+                  <ul>{currentCard && currentCard.genres.map((genre =>{
+                     return <li key={genre.id}>{genre.name}</li>
+                  }))}</ul>
                </li>
             </ul>
          </div>
@@ -69,9 +62,18 @@ const MovieCard = () => {
             <p>additional information</p>
             <ul>
                <li>
-                  Cast <p>{currentCard.overview}</p>
+                  Cast <p>{'people'}</p>
+                  сделать это кнопкой по которой рисуется разметка 
+                  {actors && actors.cast.map((actor => {
+                     return (<p key={actor.id}>{actor.name}</p>)
+                  }))}
                </li>
-               <li>Reviews</li>
+               <li>Reviews
+               сделать это кнопкой по которой рисуется разметка
+               {reviews && reviews.map((review => {
+                     return (<p key={review.id}>{review.content}</p>)
+                  }))}
+               </li>
             </ul>
          </div>
       </main>

@@ -1,7 +1,5 @@
 import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-// import { useSearchParams } from 'react-router-dom';
-// import { useParams } from 'react-router-dom';
 import { getSearchMovies } from 'components/Api/api';
 
 function Movies() {
@@ -32,9 +30,7 @@ function Movies() {
 
    return (
       <main>
-         <form action="">
             <input type="text" value={movieId} onChange={updateQueryString} />
-            <button type="submit">submit</button>
             {movieCard && (
                <ul>
                   {movieCard.map(card => {
@@ -46,7 +42,6 @@ function Movies() {
                   })}
                </ul>
             )}
-         </form>
       </main>
    );
 }
