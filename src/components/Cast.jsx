@@ -12,7 +12,6 @@ const Cast = () => {
       getData();
    }, [currentId]);
 
-   console.log(actors);
    return (
       <ul>
          {actors && actors.map(actor => {

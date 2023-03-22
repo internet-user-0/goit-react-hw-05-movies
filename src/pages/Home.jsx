@@ -6,14 +6,13 @@ import { getTrendingMovies } from '../api/api';
 const Home = () => {
    const [trends, setTrends] = useState('');
    const location = useLocation();
-   console.log(location);
 
    useEffect(() => {
       async function getData() {
          setTrends(await getTrendingMovies());
       }
       getData();
-   }, []);
+   }, [trends]);
 
    return (
       <main>

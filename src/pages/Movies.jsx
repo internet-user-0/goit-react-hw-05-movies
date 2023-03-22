@@ -1,4 +1,4 @@
-import { Link, useSearchParams, useLocation } from 'react-router-dom';
+import { NavLink, useSearchParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getSearchMovies } from 'api/api';
 
@@ -34,12 +34,12 @@ function Movies() {
                {movieCard.map(card => {
                   return (
                      <li key={card.id}>
-                        <Link
+                        <NavLink
                            state={{ from: location}}
                            to={`${card.id}`}
                         >
                            {card.title}
-                        </Link>
+                        </NavLink>
                      </li>
                   );
                })}

@@ -5,6 +5,7 @@ import { getReviewsMovie } from 'api/api';
 const Reviews = () => {
    const [reviews, setReviews] = useState([]);
    const { currentId } = useParams();
+
    useEffect(() => {
       async function getData() {
          return setReviews(await getReviewsMovie(currentId));
@@ -12,7 +13,6 @@ const Reviews = () => {
       getData();
    }, [currentId]);
 
-   console.log(reviews);
    return (
       <ul>
          {reviews.length > 0 ? (

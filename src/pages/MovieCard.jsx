@@ -24,9 +24,11 @@ const MovieCard = () => {
       getData();
    }, [currentId]);
 
+   console.log(location)
+
    return (
       <main className={css.container}>
-         <NavLink to={`${location.state.from.pathname}` ?? '/home'}>
+         <NavLink to={`${location?.state?.from?.pathname}` && '/'}>
             Go back
          </NavLink>
          <div className={css.filmContainer}>
@@ -64,10 +66,10 @@ const MovieCard = () => {
             <p>additional information</p>
             <ul>
                <li>
-                  <Link to="cast">Cast</Link>
+                  <Link to="cast" state={{ from: location }}>Cast</Link>
                </li>
                <li>
-                  <Link to="reviews">Reviews</Link>
+                  <Link to="reviews" state={{ from: location }}>Reviews</Link>
                </li>
             </ul>
          </div>
