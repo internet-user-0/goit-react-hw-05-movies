@@ -35,7 +35,7 @@ function Movies() {
                   return (
                      <li key={card.id}>
                         <Link
-                           state={{ from: location, name: movieId }}
+                           state={{ from: location}}
                            to={`${card.id}`}
                         >
                            {card.title}
