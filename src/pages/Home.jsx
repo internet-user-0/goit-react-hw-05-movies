@@ -15,8 +15,6 @@ const Home = () => {
       getData();
    }, []);
 
-   console.log(trends);
-
    return (
       <main>
          <h1>Trending today</h1>

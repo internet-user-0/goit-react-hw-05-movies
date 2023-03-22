@@ -1,7 +1,7 @@
 import {
    useParams,
-   // NavLink,
-   // useLocation,
+   NavLink,
+   useLocation,
    Link,
    Outlet,
 } from 'react-router-dom';
@@ -14,7 +14,7 @@ import css from '../pageStyles/movieCard.module.css'
 const MovieCard = () => {
    const [currentCard, setCurrentCard] = useState('');
    const { currentId } = useParams();
-   // const location = useLocation();
+   const location = useLocation();
 
 
    useEffect(() => {
@@ -26,9 +26,9 @@ const MovieCard = () => {
 
    return (
       <main className={css.container}>
-         {/* <NavLink to={`${location.state.from.pathname}` ?? '/home'}>
+         <NavLink to={`${location.state.from.pathname}` ?? '/home'}>
             Go back
-         </NavLink> */}
+         </NavLink>
          <div className={css.filmContainer}>
             <img
                src={`https://image.tmdb.org/t/p/w500/${currentCard.poster_path}`}
