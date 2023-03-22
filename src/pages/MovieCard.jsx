@@ -5,16 +5,16 @@ import {
    Link,
    Outlet,
 } from 'react-router-dom';
-import { getDetailsMovie} from '../api/api';
+import { getDetailsMovie } from '../api/api';
+import { useEffect, useState, useRef } from 'react';
 
-import { useEffect, useState } from 'react';
-
-import css from '../pageStyles/movieCard.module.css'
+import css from '../pageStyles/movieCard.module.css';
 
 const MovieCard = () => {
    const [currentCard, setCurrentCard] = useState('');
    const { currentId } = useParams();
    const location = useLocation();
+   const goBackLink = useRef(location.state?.from ?? '/')
 
 
    useEffect(() => {
@@ -24,13 +24,11 @@ const MovieCard = () => {
       getData();
    }, [currentId]);
 
-   console.log(location)
+
 
    return (
       <main className={css.container}>
-         <NavLink to={`${location?.state?.from?.pathname}` && '/'}>
-            Go back
-         </NavLink>
+         <NavLink to={goBackLink.current}>Go back</NavLink>
          <div className={css.filmContainer}>
             <img
                src={`https://image.tmdb.org/t/p/w500/${currentCard.poster_path}`}
@@ -66,14 +64,18 @@ const MovieCard = () => {
             <p>additional information</p>
             <ul>
                <li>
-                  <Link to="cast" state={{ from: location }}>Cast</Link>
+                  <Link to="cast" state={{ from: location }}>
+                     Cast
+                  </Link>
                </li>
                <li>
-                  <Link to="reviews" state={{ from: location }}>Reviews</Link>
+                  <Link to="reviews" state={{ from: location }}>
+                     Reviews
+                  </Link>
                </li>
             </ul>
          </div>
-         <Outlet />
+            <Outlet />
       </main>
    );
 };

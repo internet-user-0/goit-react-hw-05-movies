@@ -5,10 +5,9 @@ import { getSearchMovies } from 'api/api';
 function Movies() {
    const [movieCard, setMovieCard] = useState('');
    const [searchParams, setSearchParams] = useSearchParams('');
-   const movieId = searchParams.get('movieId') ?? '';
+   const movieId = searchParams.get('movieId') ?? "";
    const location = useLocation();
 
-   console.log(movieCard);
 
    useEffect(() => {
       async function getData() {
