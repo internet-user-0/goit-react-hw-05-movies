@@ -22,7 +22,7 @@ const Home = () => {
                trends.map(trend => {
                   return (
                      <li key={`${trend.id}`}>
-                        <Link state={{ from: location }} to={`${trend.id}`}>
+                        <Link state={{ from: location }} to={`/movies/${trend.id}`}>
                            {trend.title}
                         </Link>
                      </li>
